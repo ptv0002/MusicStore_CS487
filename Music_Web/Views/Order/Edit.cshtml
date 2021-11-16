@@ -1,0 +1,141 @@
+﻿@model Music_Web.Models.OrderViewModel
+@{
+    ViewData["Title"] = "Edit Order";
+    ViewBag.OActive = "active";
+}
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" href="#first" aria-controls="first" role="tab" data-toggle="tab">Basic Info</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#second" aria-controls="second" role="tab" data-toggle="tab">Detailed Info</a>
+        </li>
+    </ul>
+</div>
+<div class="tab-content mt-3">
+    <div role="tabpanel" class="tab-pane active" id="first">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <dl class="row">
+                <dt class="col-sm-2 font-weight-bold">
+                    @Html.DisplayNameFor(model => model.DateOfOrder)
+                </dt>
+                <dd class="col-sm-10">
+                    <input asp-for="DateOfOrder" class="form-control" />
+                </dd>
+                <dt class="col-sm-2 font-weight-bold">
+                    Customer ID
+                </dt>
+                <dd class="col-sm-10">
+                    <select asp-for="CustomerID" class="form-control" asp-items="ViewBag.CustomerID"></select>
+                </dd>
+                <dt class="col-sm-2 font-weight-bold">
+                    Customer Name
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CFirstName)
+                    @Html.Display(" ")
+                    @Html.DisplayFor(model => model.CLastName)
+                </dd>
+                <dt class="col-sm-2 font-weight-bold">
+                    Customer Phone Number
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.CPhone)
+                </dd>
+                <dt class="col-sm-2 font-weight-bold">
+                    Employee ID
+                </dt>
+                <dd class="col-sm-10">
+                    <select asp-for="EmployeeID" class="form-control" asp-items="ViewBag.EmployeeID"></select>
+                </dd>
+                <dt class="col-sm-2 font-weight-bold">
+                    Employee Name
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EFirstName)
+                    @Html.Display(" ")
+                    @Html.DisplayFor(model => model.ELastName)
+                </dd>
+                <dt class="col-sm-2 font-weight-bold">
+                    Total Order's Value
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.TotalOrder)
+                </dd>
+            </dl>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="second">
+        <p>
+            <a asp-action="Create" asp-controller="OrderDetail" asp-route-id="@Model.ID">Add</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        Instrument ID
+                    </th>
+                    <th>
+                        Instrument Type
+                    </th>
+                    <th>
+                        Instrument Model
+                    </th>
+                    <th>
+                        Instrument Brand
+                    </th>
+                    <th>
+                        Unit Price
+                    </th>
+                    <th>
+                        Quantity Sold
+                    </th>
+                    <th>
+                        Total Price
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.OrderDetails)
+                {
+                    <tr>
+                        <td>
+                            <a asp-action="Details" asp-controller="OrderDetail" asp-route-id="@item.ID">Details</a>
+                        </td>
+                        <td>
+                            @item.InstrumentID
+                        </td>
+                        <td>
+                            @item.Type
+                        </td>
+                        <td>
+                            @item.Model
+                        </td>
+                        <td>
+                            @item.Brand
+                        </td>
+                        <td>
+                            $@item.UnitPrice
+                        </td>
+                        <td>
+                            @item.QuantitySold
+                        </td>
+                        <td>
+                            $@item.TotalPrice
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

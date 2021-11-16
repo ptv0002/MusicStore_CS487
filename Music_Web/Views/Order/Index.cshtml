@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Music_Web.Models.OrderViewModel>
+
+@{
+    ViewData["Title"] = "Order Page";
+    ViewBag.OActive = "active";
+}
+<p>
+    <a asp-action="Create">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfOrder)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalOrder)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CFirstName)
+                @Html.Display(" ")
+                @Html.DisplayFor(modelItem => item.CLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EFirstName)
+                @Html.Display(" ")
+                @Html.DisplayFor(modelItem => item.ELastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfOrder)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalOrder)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

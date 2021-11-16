@@ -1,9 +1,11 @@
+using DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,13 @@ namespace Music_Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Register AppDbContext, use to connect to MS SQL Server
+            services.AddDbContext<MusicStore_Context>(options => {
+                // Read Connection String
+                string connectstring = Configuration.GetConnectionString("DefaultConnection");
+                // Use MS SQL Server
+                options.UseSqlServer(connectstring);
+            });
             services.AddControllersWithViews();
         }
 

@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Music_Web", "Music_Web\Music_Web.csproj", "{65DC03B5-1844-410D-9C95-57C09B297173}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Music_Web", "Music_Web\Music_Web.csproj", "{65DC03B5-1844-410D-9C95-57C09B297173}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{400B2360-0B76-4105-9451-2B251C177C1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{0C9234AB-0937-44C3-8382-6695F84789B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{65DC03B5-1844-410D-9C95-57C09B297173}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65DC03B5-1844-410D-9C95-57C09B297173}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65DC03B5-1844-410D-9C95-57C09B297173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{400B2360-0B76-4105-9451-2B251C177C1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{400B2360-0B76-4105-9451-2B251C177C1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{400B2360-0B76-4105-9451-2B251C177C1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{400B2360-0B76-4105-9451-2B251C177C1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C9234AB-0937-44C3-8382-6695F84789B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C9234AB-0937-44C3-8382-6695F84789B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C9234AB-0937-44C3-8382-6695F84789B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C9234AB-0937-44C3-8382-6695F84789B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
