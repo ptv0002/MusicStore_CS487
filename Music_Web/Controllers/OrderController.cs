@@ -31,7 +31,7 @@ namespace Music_Web.Controllers
                 {
                     ID = item.ID,
                     DateOfOrder = item.DateOfOrder,
-                    TotalOrder = sum,
+                    TotalOrder = Math.Round((decimal)sum,2),
                     EmployeeID = item.Employee.ID,
                     EFirstName = item.Employee.FirstName,
                     ELastName = item.Employee.LastName,
@@ -68,7 +68,7 @@ namespace Music_Web.Controllers
                     Type = instrumentInfo.InstrumentType,
                     UnitPrice = item.UnitPrice,
                     QuantitySold = item.QuantitySold,
-                    TotalPrice = item.UnitPrice * item.QuantitySold
+                    TotalPrice = Math.Round((decimal)(item.UnitPrice * item.QuantitySold),2)
                 };
                 details.Add(detailItem);
             }
@@ -77,10 +77,11 @@ namespace Music_Web.Controllers
             {
                 ID = id,
                 DateOfOrder = order.DateOfOrder,
-                TotalOrder = sum,
+                TotalOrder = Math.Round((decimal)sum,2),
                 EmployeeID = employee.ID,
                 EFirstName = employee.FirstName,
                 ELastName = employee.LastName,
+                CustomerID = customer.ID,
                 CFirstName = customer.FirstName,
                 CLastName = customer.LastName,
                 CPhone = customer.Phone,

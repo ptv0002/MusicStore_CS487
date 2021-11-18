@@ -22,7 +22,7 @@ namespace Music_Web.Models
         [Display(Name = "Last Name")]
         public string ELastName { get; set; }
         [Display(Name = "Total Order's Value")]
-        public double? TotalOrder { get; set; }
+        public decimal? TotalOrder { get; set; }
         [Display(Name = "Date of Order")]
         public DateTime? DateOfOrder { get; set; }
         public IEnumerable<OrderDetailViewModel> OrderDetails { get; set; }

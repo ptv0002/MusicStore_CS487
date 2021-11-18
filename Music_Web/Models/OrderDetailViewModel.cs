@@ -19,6 +19,6 @@ namespace Music_Web.Models
         [Display(Name = "Unit Price")]
         public double? UnitPrice { get; set; }
         [Display(Name = "Total Price")]
-        public double? TotalPrice { get; set; }
+        public decimal? TotalPrice { get; set; }
     }
 }
