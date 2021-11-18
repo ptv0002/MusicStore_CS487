@@ -46,7 +46,7 @@ namespace Music_Web.Controllers
                 if (instrument.Quantity < 0)
                 {
                     ModelState.AddModelError(string.Empty,"Not enough instrument in stock");
-                    ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID", orderDetail.OrderInfoID);
+                    ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID", orderDetail.InstrumentID.ToString());
                     return View(orderDetail);
                 }
                 _context.Update(instrument);
@@ -55,7 +55,7 @@ namespace Music_Web.Controllers
             }
             catch
             {
-                ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID", orderDetail.OrderInfoID);
+                ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID", orderDetail.InstrumentID.ToString());
                 return View(orderDetail);
             }
         }
@@ -69,24 +69,24 @@ namespace Music_Web.Controllers
         public ActionResult Edit(int id)
         {
             var item = _context.OrderDetails.Find(id);
-            ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID",item.OrderInfoID);
+            ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID",item.InstrumentID.ToString());
             return View(item);
         }
 
         // POST: OrderDetailController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(OrderDetail orderDetail)
+        public async Task<IActionResult> Edit(int id, OrderDetail orderDetail)
         {
             try
             {
-                var item = await _context.OrderDetails.FindAsync(orderDetail.ID);
+                var item = await _context.OrderDetails.FindAsync(id);
                 var instrument = await _context.Instruments.FindAsync(orderDetail.InstrumentID);
                 instrument.Quantity = instrument.Quantity + item.QuantitySold - orderDetail.QuantitySold;
                 if (instrument.Quantity < 0)
                 {
                     ModelState.AddModelError(string.Empty, "Not enough instrument in stock");
-                    ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID", orderDetail.OrderInfoID);
+                    ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID", orderDetail.InstrumentID.ToString());
                     return View(orderDetail);
                 }
                 _context.Update(instrument);
@@ -98,11 +98,11 @@ namespace Music_Web.Controllers
 
                 
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Edit", "Order", new { id = orderDetail.OrderInfoID });
+                return RedirectToAction("Edit", "Order", new { id = orderDetail.OrderInfoID});
             }
             catch
             {
-                ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID",orderDetail.OrderInfoID);
+                ViewData["InstrumentID"] = new SelectList(_context.Instruments, "ID", "ID",orderDetail.InstrumentID.ToString());
                 return View(orderDetail);
             }
         }

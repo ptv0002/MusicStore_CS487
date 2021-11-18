@@ -8,7 +8,7 @@ namespace Music_Web.Models
 {
     public class OrderDetailViewModel
     {
-        public int ID { get; set; }
+        public int? ID { get; set; }
         public int? OrderInfoID { get; set; }
         public int? InstrumentID { get; set; }
         public string Brand { get; set; }
