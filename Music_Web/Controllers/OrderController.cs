@@ -62,6 +62,7 @@ namespace Music_Web.Controllers
                 var instrumentInfo = _context.Instruments.Find(item.InstrumentID);
                 OrderDetailViewModel detailItem = new()
                 {
+                    ID = item.ID,
                     InstrumentID = item.InstrumentID,
                     Brand = instrumentInfo.Brand,
                     Model = instrumentInfo.Model,
@@ -81,6 +82,7 @@ namespace Music_Web.Controllers
                 EmployeeID = employee.ID,
                 EFirstName = employee.FirstName,
                 ELastName = employee.LastName,
+                CustomerID = customer.ID,
                 CFirstName = customer.FirstName,
                 CLastName = customer.LastName,
                 CPhone = customer.Phone,
